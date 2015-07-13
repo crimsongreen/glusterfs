@@ -1,9 +1,4 @@
 ---
 
-#   - name: "Build hosts file"
-#     lineinfile: dest=/etc/hosts regexp='.*{{ item }}$' line="{{ hostvars[item].ansible_default_ipv4.address }} {{item}}" state=present
-#     when: hostvars[item].ansible_default_ipv4.address is defined
-#     with_items: groups['all']
-
    - name: Create the hosts file for all machines
      template: src=hosts.j2 dest=/etc/hosts
