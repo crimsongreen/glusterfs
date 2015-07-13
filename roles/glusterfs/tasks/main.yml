@@ -1,0 +1,24 @@
+---
+
+   - name: GlusterFS - obtain repo
+     command: wget -P /etc/yum.repos.d http://download.gluster.org/pub/gluster/glusterfs/LATEST/CentOS/glusterfs-epel.repo
+
+   - name: GlusterFS - Install glusterfs
+     yum: name=glusterfs state=latest
+
+   - name: GlusterFS - Install glusterfs-fuse
+     yum: name=glusterfs-fuse state=latest
+
+   - name: GlusterFS - Install glusterfs-server
+     yum: name=glusterfs-server state=latest
+
+   - service: name=glusterd state=started
+
+   - name: GlusterFS - configure 
+     command: mkdir -p /data/gluster/brick
+
+   - firewalld: port=24007/tcp permanent=true state=enabled 
+   - firewalld: port=111/tcp permanent=true state=enabled 
+   - firewalld: port=2049/tcp permanent=true state=enabled 
+   - firewalld: port=49152/tcp permanent=true state=enabled 
+   - service: name=firewalld state=restarted

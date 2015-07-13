@@ -1,0 +1,7 @@
+---
+
+glusterfs1: "{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}"
+glusterfs2: "{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}"
+web: "{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}"
+
+iface: '{{ ansible_default_ipv4.interface }}'

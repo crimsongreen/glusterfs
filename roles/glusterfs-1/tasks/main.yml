@@ -1,0 +1,17 @@
+---
+
+   - name: Probe peer
+     command: "gluster peer probe glusterfs-2"
+
+   - name: create gluster volume
+     command: "gluster volume create vol0 rep 2 transport tcp glusterfs-1:/data/gluster/brick glusterfs-2:/data/gluster/brick force"
+     run_once: true
+     ignore_errors: yes
+
+   - name: start gluster volume
+     gluster_volume: state=started name=vol0
+     ignore_errors: yes
+
+   - name: mount glusterfs
+     command: "mount -t glusterfs glusterfs-1:/vol0 /mnt/"
+     ignore_errors: yes

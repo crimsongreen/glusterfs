@@ -1,0 +1,5 @@
+---
+
+   - name: mount glusterfs
+     command: "mount -t glusterfs glusterfs-1:/vol0 /mnt/"
+     ignore_errors: yes

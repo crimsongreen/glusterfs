@@ -1,0 +1,29 @@
+---
+- name: Common configuration for all servers
+  hosts: all
+  remote_user: root
+  sudo: yes
+
+  roles:
+    - common
+
+- name: Install GlusterFS
+  hosts: glusterfs
+  remote_user: root
+
+  roles:
+    - glusterfs
+
+- name: Configure GlusterFS-1
+  hosts: glusterfs-1
+  remote_user: root
+
+  roles:
+    - glusterfs-1
+
+- name: Configure GlusterFS-2
+  hosts: glusterfs-2
+  remote_user: root
+
+  roles:
+    - glusterfs-2
