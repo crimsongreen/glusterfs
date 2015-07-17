@@ -3,6 +3,7 @@ This is an ansible playbook for deploying GlusterFS on two CentOS 7 servers.
 
 ### Prerequisites:
 2x CentOS 7 servers
+
 1x staging server or PC running Ansible 1.9.2 
 
 ### Deployment:
